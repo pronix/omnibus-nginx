@@ -9,6 +9,7 @@ dependency "openssl"
 dependency "libxml2"
 dependency "libxslt"
 dependency "pcre"
+dependency "passenger"
 dependency "gd"
 dependency "ngx_http_gunzip_filter_module"
 dependency "ngx_http_filter_cache"
@@ -17,6 +18,7 @@ dependency "nginx_http_jsonp_module"
 dependency "ngx_cache_purge"
 dependency "nginx-statsd"
 dependency "nginx_requestid"
+
 
 source url: "http://openresty.org/download/ngx_openresty-#{version}.tar.gz", md5: "e2bbeb5ebfd3422f635747432777e3fb"
 
@@ -78,6 +80,7 @@ build do
            "--add-module=#{source_dir}/nginx_http_jsonp_module",
            "--add-module=#{source_dir}/ngx_cache_purge",
            "--add-module=#{source_dir}/nginx-statsd",
+           "--add-module=#{source_dir}/passenger-4.0.23/ext/nginx",
            "--add-module=#{source_dir}/nginx_requestid"
           ].join(" "), :env => env
 

@@ -25,10 +25,6 @@ fi
 
 test -x $DAEMON || exit 0
 
-if [ "$MMAP_LOWMEM" = yes ]; then
-    export LD_PRELOAD=/opt/nginx/lib/libmmap_lowmem.so
-fi
-
 set -e
 
 . /lib/lsb/init-functions

@@ -13,13 +13,7 @@ dependency "preparation"
 
 # openresty dependencies/components
 dependency "nginx"
-dependency "luarocks"
-dependency "lua-resty-riak"
-dependency "luafilesystem"
-dependency "luasec"
-dependency "luasocket"
 
-dependency "mmap_lowmem"
 
 # version manifest file
 dependency "version-manifest"
