@@ -10,7 +10,6 @@ dependency "libxml2"
 dependency "libxslt"
 dependency "pcre"
 dependency "passenger"
-dependency "gd"
 dependency "ngx_http_gunzip_filter_module"
 dependency "ngx_http_filter_cache"
 dependency "nginx_upstream_check_module"
@@ -39,8 +38,7 @@ build do
 
   command ["./configure",
            "--prefix=#{install_dir}/embedded",
-           "--with-luajit",
-           "--conf-path=#{install_dir}/etc/nginx.conf",
+           "--conf-path=/etc/nginx.conf",
            "--error-log-path=#{install_dir}/log/error.log",
            "--http-log-path=#{install_dir}/log/access.log",
            "--sbin-path=#{install_dir}/sbin/nginx",
@@ -64,12 +62,9 @@ build do
            "--with-ipv6",
            "--with-sha1=#{install_dir}/embedded/include/openssl",
            "--with-md5=#{install_dir}/embedded/include/openssl",
-           "--with-mail",
-           "--with-mail_ssl_module",
            "--with-http_stub_status_module",
            "--with-http_secure_link_module",
            "--with-http_sub_module",
-           "--with-luajit-xcflags=' -fPIC '",
            "--with-pcre",
            "--with-pcre-jit",
            "--with-ld-opt=\"-pie -L#{install_dir}/embedded/lib -Wl,-rpath,#{install_dir}/embedded/lib -lssl -lcrypto -ldl -lz\"",
@@ -90,9 +85,9 @@ build do
   command "mkdir -p #{install_dir}/lib/nginx"
 
   block do
-    dir = File.join(install_dir, "etc", "init")
+    dir = File.join(install_dir, 'etc', 'init')
     FileUtils.mkdir_p(dir)
-    FileUtils.cp(File.join(Omnibus.project_root, "etc", "nginx.init"), File.join(dir, "nginx.init"))
+    FileUtils.cp(File.join(Omnibus.project_root, 'etc', 'nginx.init'), File.join(dir, 'nginx'))
   end
 
 end
