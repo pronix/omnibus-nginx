@@ -60,6 +60,7 @@ build do
            "--with-http_sub_module",
            "--with-http_xslt_module",
            "--with-ipv6",
+           "--with-luajit",
            "--with-sha1=#{install_dir}/embedded/include/openssl",
            "--with-md5=#{install_dir}/embedded/include/openssl",
            "--with-http_stub_status_module",
